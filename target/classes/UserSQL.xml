@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tarena.dao.UserMapperDao">
+    <insert id="addUser" parameterType="com.tarena.entity.User">
+        insert into d_user (name,sex,salary) values(#{name}, #{sex}, #{salary});
+    </insert>
+    <delete id="deleteUserById" parameterType="int">
+        delete from d_user where id=#{id};
+    </delete>
+    <update id="updateUser" parameterType="com.tarena.entity.User">
+        update d_user set name=#{name}, sex=#{sex}, salary=#{salary} where id=#{id};
+    </update>
+
+    <select id="findById" parameterType="int" resultType="com.tarena.entity.User">
+        select * from d_user where id=#{id};
+    </select>
+    <select id="findAll" resultType="com.tarena.entity.User">
+        select * from d_user;
+    </select>
+    <select id="findPage" parameterType="com.tarena.entity.Page" resultType="com.tarena.entity.User">
+        select * from d_user limit #{begin},#{size}
+    </select>
+</mapper>
