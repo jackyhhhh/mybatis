@@ -41,7 +41,7 @@
 1. 创建一个新的实体Page
 - offset: 起始位置(偏移量), 从0开始
 - size:从起始位置开始取的数量
-```
+```java
 import java.io.Serializable;
 
 public class Page implements Serializable {
@@ -56,7 +56,7 @@ public class Page implements Serializable {
 ```
 
 2. 在UserSql.xml中定义分页查询的方法:
-```
+```xml
 <select id="findPage" parameterType="org.study.entity.Page" resultType="org.study.entity.User">
     select * from d_user limit #{offSet}, #{size}
 </select>
